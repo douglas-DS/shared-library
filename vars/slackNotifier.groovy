@@ -2,7 +2,7 @@
 
 def call(String buildResult) {
     if ( buildResult == "SUCCESS" ) {
-        slackSend color: "good", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} at step ${env.BUILD_STAGE} was successful"
+        slackSend color: "good", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} at step ${env.BUILD_STEP} was successful"
     }
     else if( buildResult == "FAILURE" ) {
         slackSend color: "danger", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} was failed"
