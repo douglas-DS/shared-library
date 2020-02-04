@@ -1,8 +1,8 @@
 #!/usr/bin/env groovy
 
-def call(String buildResult) {
+def call(String buildResult, String step) {
     if ( buildResult == "SUCCESS" ) {
-        slackSend color: "good", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} at step ${env.BUILD_STEP} was successful"
+        slackSend color: "good", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} at step ${step} was successful"
     }
     else if( buildResult == "FAILURE" ) {
         slackSend color: "danger", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER} was failed"
