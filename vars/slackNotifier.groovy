@@ -1,16 +1,16 @@
 #!/usr/bin/env groovy
 
-def call(String buildResult, String step) {
+def call(String buildResult, String stage) {
     if ( buildResult == "SUCCESS" ) {
-        slackSend color: "good", channel: "${env.JOB_NAME}", message: "Job: '${env.JOB_NAME}', Buildnumber: '${env.BUILD_NUMBER}', Stage: '${step}' was successful"
+        slackSend color: "good", message: "Job: '${env.JOB_NAME}', Buildnumber: '${env.BUILD_NUMBER}', Stage: '${stage}' was successful"
     }
     else if( buildResult == "FAILURE" ) {
-        slackSend color: "danger", channel: "${env.JOB_NAME}", message: "Job: '${env.JOB_NAME}', Buildnumber: '${env.BUILD_NUMBER}', Stage: '${step}' was failed"
+        slackSend color: "danger", message: "Job: '${env.JOB_NAME}', Buildnumber: '${env.BUILD_NUMBER}', Stage: '${stage}' was failed"
     }
     else if( buildResult == "UNSTABLE" ) {
-        slackSend color: "warning", channel: "${env.JOB_NAME}", message: "Job: '${env.JOB_NAME}', Buildnumber: '${env.BUILD_NUMBER}', Stage: '${step}' was unstable"
+        slackSend color: "warning", message: "Job: '${env.JOB_NAME}', Buildnumber: '${env.BUILD_NUMBER}', Stage: '${stage}' was unstable"
     }
     else {
-        slackSend color: "danger", channel: "${env.JOB_NAME}", message: "Job: '${env.JOB_NAME}', Buildnumber: '${env.BUILD_NUMBER}', Stage: '${step}' its result was unclear"
+        slackSend color: "danger", message: "Job: '${env.JOB_NAME}', Buildnumber: '${env.BUILD_NUMBER}', Stage: '${stage}' its result was unclear"
     }
 }
